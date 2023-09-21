@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{A8128393-7222-4FC1-A232-0A6627C83304}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{89AFE27C-FADF-43A2-A9E7-EF62E39A69E4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -112,29 +112,30 @@
                       cachedLength="255"
                       cachedName="codigo"
                       externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[codigo]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[codigo]" />
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[codigo]" />
                     <inputColumn
                       refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[direccion]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="direccion"
                       externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[direccion]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[direccion]" />
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[direccion]" />
                     <inputColumn
                       refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[tipo_inmueble]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="tipo_inmueble"
                       externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[tipo_inmueble]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[tipo_inmueble]" />
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[tipo_inmueble]" />
                     <inputColumn
                       refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[valor_arriendo]"
                       cachedDataType="numeric"
                       cachedName="valor_arriendo"
                       cachedPrecision="13"
                       cachedScale="2"
+                      cachedSortKeyPosition="-1"
                       externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[valor_arriendo]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]" />
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[valor_arriendo]" />
                     <inputColumn
                       refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[iva_arriendo]"
                       cachedDataType="numeric"
@@ -142,14 +143,21 @@
                       cachedPrecision="13"
                       cachedScale="3"
                       externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[iva_arriendo]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[iva_arriendo]" />
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[iva_arriendo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[magnitudA]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="magnitudA"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[magnitud_arriendo]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[magnitudA]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[#id]"
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[id]"
                       dataType="i4"
-                      name="#id" />
+                      name="id" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[codigo]"
                       dataType="wstr"
@@ -169,14 +177,17 @@
                       refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[valor_arriendo]"
                       dataType="numeric"
                       name="valor_arriendo"
-                      precision="13"
-                      scale="2" />
+                      precision="13" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[iva_arriendo]"
                       dataType="numeric"
                       name="iva_arriendo"
-                      precision="13"
-                      scale="3" />
+                      precision="13" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[magnitud_arriendo]"
+                      dataType="wstr"
+                      length="12"
+                      name="magnitud_arriendo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -624,6 +635,193 @@
               </outputs>
             </component>
             <component
+              refId="Package\Data Flow Task\Data Conversion 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input].Columns[codigo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="codigo"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[codigo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input].Columns[direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="direccion"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[direccion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input].Columns[tipoInmueble]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="tipoInmueble"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[tipoInmueble]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input].Columns[valorArriendo]"
+                      cachedDataType="ui4"
+                      cachedName="valorArriendo"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[valorArriendo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input].Columns[ivaArriendo]"
+                      cachedDataType="numeric"
+                      cachedName="ivaArriendo"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output].Columns[ivaArriendo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of codigo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of codigo]"
+                      name="Copy of codigo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\XML Source.Outputs[record].Columns[codigo]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of direccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of direccion]"
+                      name="Copy of direccion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\XML Source.Outputs[record].Columns[direccion]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of tipoInmueble]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of tipoInmueble]"
+                      name="Copy of tipoInmueble"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\XML Source.Outputs[record].Columns[tipoInmueble]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of valorArriendo]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of valorArriendo]"
+                      name="Copy of valorArriendo"
+                      precision="13"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\XML Source.Outputs[record].Columns[valorArriendo]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of ivaArriendo]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of ivaArriendo]"
+                      name="Copy of ivaArriendo"
+                      precision="13"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output].Columns[ivaArriendo]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -895,6 +1093,31 @@
                   exclusionGroup="1"
                   name="Derived Column Output"
                   synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[magnitudA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="11"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[magnitudA]"
+                      name="magnitudA"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]} &gt; 0 &amp;&amp; #{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]} &lt; 500001 ? "Valor bajo" : (#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]} &gt; 500000 &amp;&amp; #{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]} &lt; 1000001 ? "Valor medio" : (#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]} &gt; 1000000 ? "Valor alto" : ""))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">valor_arriendo &gt; 0 &amp;&amp; valor_arriendo &lt; 500001 ? "Valor bajo" : (valor_arriendo &gt; 500000 &amp;&amp; valor_arriendo &lt; 1000001 ? "Valor medio" : (valor_arriendo &gt; 1000000 ? "Valor alto" : ""))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -915,6 +1138,88 @@
                       refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 3"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 3"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input].Columns[valorArriendo]"
+                      cachedDataType="ui4"
+                      cachedName="valorArriendo"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[valorArriendo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output].Columns[ivaArriendo]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output].Columns[ivaArriendo]"
+                      name="ivaArriendo"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\XML Source.Outputs[record].Columns[valorArriendo]} * 0.19</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">valorArriendo * 0.19</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1120,6 +1425,266 @@
               </outputs>
             </component>
             <component
+              refId="Package\Data Flow Task\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[#id]"
+                      cachedDataType="numeric"
+                      cachedName="#id"
+                      cachedPrecision="13"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[#id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[codigo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="codigo"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[codigo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="direccion"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[direccion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[tipo_inmueble]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="tipo_inmueble"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[tipo_inmueble]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[valor_arriendo]"
+                      cachedDataType="numeric"
+                      cachedName="valor_arriendo"
+                      cachedPrecision="13"
+                      cachedScale="2"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[iva_arriendo]"
+                      cachedDataType="numeric"
+                      cachedName="iva_arriendo"
+                      cachedPrecision="13"
+                      cachedScale="3"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[iva_arriendo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[magnitudA]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="magnitudA"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[magnitudA]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[#id]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[#id]"
+                      name="#id"
+                      precision="13">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[#id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[codigo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[codigo]"
+                      name="codigo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[direccion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[direccion]"
+                      name="direccion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[direccion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[tipo_inmueble]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[tipo_inmueble]"
+                      name="tipo_inmueble">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[tipo_inmueble]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[valor_arriendo]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[valor_arriendo]"
+                      name="valor_arriendo"
+                      precision="13"
+                      scale="2"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[iva_arriendo]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[iva_arriendo]"
+                      name="iva_arriendo"
+                      precision="13"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[iva_arriendo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[magnitudA]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[magnitudA]"
+                      name="magnitudA">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[magnitudA]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task\Union All"
               componentClassID="Microsoft.UnionAll"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -1289,9 +1854,89 @@
                 </input>
                 <input
                   refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
-                  dangling="true"
                   hasSideEffects="true"
                   name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[codigo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="codigo"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[codigo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[codigo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[direccion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="direccion"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[direccion]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[direccion]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[tipoInmueble]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="tipoInmueble"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[tipoInmueble]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[tipo_inmueble]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[Copy of valorArriendo]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of valorArriendo"
+                      cachedPrecision="13"
+                      cachedScale="2"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of valorArriendo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[valor_arriendo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[Copy of ivaArriendo]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of ivaArriendo"
+                      cachedPrecision="13"
+                      cachedScale="3"
+                      lineageId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of ivaArriendo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[iva_arriendo]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -1343,6 +1988,243 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Data Flow Task\XML Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element.;Microsoft Corporation;Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element."
+              name="XML Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.XmlSourceAdapter</property>
+                <property
+                  dataType="System.String"
+                  description="The XML data used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLData">C:\Users\mnu24\Downloads\inmueblesPrueba.xml</property>
+                <property
+                  dataType="System.String"
+                  description="The variable used by the XML source adapter to specify XML data."
+                  name="XMLDataVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how the XML source adapter gets XML data."
+                  name="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The XML schema definition used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLSchemaDefinition">C:\Users\mnu24\Downloads\inmueblesPrueba.xsd</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Identifies whether or not to use inline schema."
+                  name="UseInlineSchema">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how XML integer types are mapped."
+                  name="XMLIntegerMapping"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.XmlSourceAdapter+XMLIntegerMappingConverter">0</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\XML Source.Outputs[record]"
+                  name="record">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Identifies the rowset associated with the output."
+                      name="RowsetID">record</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].Columns[id]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].Columns[codigo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[codigo]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[codigo]"
+                      name="codigo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].Columns[direccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[direccion]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[direccion]"
+                      name="direccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].Columns[tipoInmueble]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[tipoInmueble]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[tipoInmueble]"
+                      name="tipoInmueble"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].Columns[valorArriendo]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[valorArriendo]"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record].Columns[valorArriendo]"
+                      name="valorArriendo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[id]"
+                      dataType="ui1"
+                      name="id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.Byte</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[codigo]"
+                      dataType="wstr"
+                      length="255"
+                      name="codigo">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[direccion]"
+                      dataType="wstr"
+                      length="255"
+                      name="direccion">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[tipoInmueble]"
+                      dataType="wstr"
+                      length="255"
+                      name="tipoInmueble">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record].ExternalColumns[valorArriendo]"
+                      dataType="ui4"
+                      name="valorArriendo">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.UInt32</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\XML Source.Outputs[record Error Output]"
+                  isErrorOut="true"
+                  name="record Error Output">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Identifies the rowset associated with the output."
+                      name="RowsetID">record</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[id]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[codigo]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[codigo]"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[codigo]"
+                      name="codigo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[direccion]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[direccion]"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[direccion]"
+                      name="direccion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[tipoInmueble]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[tipoInmueble]"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[tipoInmueble]"
+                      name="tipoInmueble" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[valorArriendo]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[valorArriendo]"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[valorArriendo]"
+                      name="valorArriendo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\XML Source.Outputs[record Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[id]"
+                      dataType="nText"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[codigo]"
+                      dataType="nText"
+                      name="codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[direccion]"
+                      dataType="nText"
+                      name="direccion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[tipoInmueble]"
+                      dataType="nText"
+                      name="tipoInmueble" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\XML Source.Outputs[record Error Output].ExternalColumns[valorArriendo]"
+                      dataType="nText"
+                      name="valorArriendo" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
@@ -1356,6 +2238,11 @@
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
             <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output1]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion 1.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[Derived Column Output]"
               endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
               name="Derived Column Output"
@@ -1367,7 +2254,12 @@
               startId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Derived Column Output2]"
-              endId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              endId="Package\Data Flow Task\Data Conversion 1.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]" />
             <path
@@ -1375,6 +2267,16 @@
               endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
               name="Excel Source Output"
               startId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[record]"
+              endId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
+              name="record"
+              startId="Package\Data Flow Task\XML Source.Outputs[record]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Union All Output 1]"
               endId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
@@ -1408,11 +2310,27 @@
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Data Flow Task\Derived Column 3"
+          TopLeft="509,194" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Data Flow Task\Excel Source"
+          TopLeft="51,84" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Data Flow Task\XML Source"
+          TopLeft="520,87" />
         <NodeLayout
           Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="47,267" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Flow Task\ADO NET Source"
+          TopLeft="263,88" />
         <NodeLayout
           Size="167,42"
           Id="Package\Data Flow Task\Derived Column 1"
@@ -1422,21 +2340,77 @@
           Id="Package\Data Flow Task\Union All"
           TopLeft="136,363" />
         <NodeLayout
-          Size="166,42"
-          Id="Package\Data Flow Task\ADO NET Source"
-          TopLeft="263,88" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Data Flow Task\Excel Source"
-          TopLeft="51,84" />
-        <NodeLayout
           Size="161,42"
           Id="Package\Data Flow Task\Data Conversion"
           TopLeft="46,190" />
         <NodeLayout
           Size="186,42"
           Id="Package\Data Flow Task\ADO NET Destination"
-          TopLeft="619,493" />
+          TopLeft="751,547" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Data Flow Task\Data Conversion 1"
+          TopLeft="510,272" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Data Flow Task\Derived Column 2"
+          TopLeft="336,447" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Union All Output 1]"
+          TopLeft="197.5,405">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="222,42"
+              Start="0,0"
+              End="222,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="4,21" />
+                  <mssgle:LineSegment
+                    End="218,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="218,21"
+                    Point2="222,21"
+                    Point3="222,25" />
+                  <mssgle:LineSegment
+                    End="222,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[record]"
+          TopLeft="591,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Excel Source Output]"
           TopLeft="124.75,126">
@@ -1451,6 +2425,28 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          TopLeft="593.75,236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1499,26 +2495,60 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="52.3333333333333,54"
+              EndConnector="42.75,54"
               Start="0,0"
-              End="52.3333333333333,46.5">
+              End="42.75,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.983948635634" />
+                    End="0,31.236074270557" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.983948635634"
-                    Point2="0,31.983948635634"
-                    Point3="4,31.983948635634" />
+                    Point1="0,31.236074270557"
+                    Point2="0,35.236074270557"
+                    Point3="4,35.236074270557" />
                   <mssgle:LineSegment
-                    End="48.3333333333333,31.983948635634" />
+                    End="38.75,35.236074270557" />
                   <mssgle:CubicBezierSegment
-                    Point1="48.3333333333333,31.983948635634"
-                    Point2="52.3333333333333,31.983948635634"
-                    Point3="52.3333333333333,35.983948635634" />
+                    Point1="38.75,35.236074270557"
+                    Point2="42.75,35.236074270557"
+                    Point3="42.75,39.236074270557" />
                   <mssgle:LineSegment
-                    End="52.3333333333333,46.5" />
+                    End="42.75,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
+          TopLeft="595,314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-368.75,49"
+              Start="0,0"
+              End="-368.75,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.973474801061" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.973474801061"
+                    Point2="0,31.973474801061"
+                    Point3="-4,31.973474801061" />
+                  <mssgle:LineSegment
+                    End="-364.75,31.973474801061" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-364.75,31.973474801061"
+                    Point2="-368.75,31.973474801061"
+                    Point3="-368.75,35.973474801061" />
+                  <mssgle:LineSegment
+                    End="-368.75,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1572,35 +2602,23 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="167,42"
-          Id="Package\Data Flow Task\Derived Column 2"
-          TopLeft="336,447" />
+          Size="99,42"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="662,450" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Union All Output 1]"
-          TopLeft="197.5,405">
+          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
+          TopLeft="503,469.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="222,42"
+              EndConnector="159,0"
               Start="0,0"
-              End="222,34.5">
+              End="151.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17"
-                    Point2="0,21"
-                    Point3="4,21" />
-                  <mssgle:LineSegment
-                    End="218,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="218,21"
-                    Point2="222,21"
-                    Point3="222,25" />
-                  <mssgle:LineSegment
-                    End="222,34.5" />
+                    End="151.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1610,31 +2628,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
-          TopLeft="503,468">
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="711.5,492">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="116,46"
+              EndConnector="132.5,55"
               Start="0,0"
-              End="108.5,46">
+              End="132.5,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="54,0" />
+                    End="0,23.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="54,0"
-                    Point2="58,0"
-                    Point3="58,4" />
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
                   <mssgle:LineSegment
-                    End="58,42" />
+                    End="128.5,27.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="58,42"
-                    Point2="58,46"
-                    Point3="62,46" />
+                    Point1="128.5,27.5"
+                    Point2="132.5,27.5"
+                    Point3="132.5,31.5" />
                   <mssgle:LineSegment
-                    End="108.5,46" />
+                    End="132.5,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1647,14 +2665,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ADO NET Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Excel Source">
     <Properties>
       <Property>
@@ -1664,6 +2674,14 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
